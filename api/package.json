@@ -1,0 +1,17 @@
+{
+  "name": "oficinamobile-api",
+  "version": "1.0.0",
+  "description": "API do OficinaMobile: le e grava as OS no banco do SantSystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file=.env src/servidor.js",
+    "dev": "node --env-file=.env --watch src/servidor.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mssql": "^12.7.4"
+  }
+}

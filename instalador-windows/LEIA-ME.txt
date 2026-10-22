@@ -1,0 +1,50 @@
+OFICINAMOBILE - INSTALACAO NO PC DA OFICINA (SERVIDOR-OFICINA)
+=======================================================
+
+Este pacote instala neste PC:
+- a API que o app OficinaMobile (celular) usa para ler e gravar as OS no banco do
+  SantSystem. Ela liga sozinha sempre que o PC ligar, mesmo sem ninguem fazer login,
+  e religa sozinha se cair;
+- a pasta do Claude (C:\OficinaOS\claude), com tudo que o Claude precisa para
+  consultar o banco (so leitura) e lancar OS/orcamentos pela API.
+
+COMO INSTALAR (ou atualizar)
+1. Extraia este zip em qualquer pasta (ex.: Area de Trabalho).
+2. Clique duas vezes em INSTALAR.cmd e aceite a permissao de administrador.
+3. Se o Node.js nao estiver instalado, ele instala sozinho (alguns minutos).
+4. Se faltar criar algum login, ele pede a senha do usuario "sa" do SQL Server
+   (esta em C:\Gerente\SANTSYSTEM.ini) UMA vez. A senha do sa NAO fica gravada.
+   Atualizando uma instalacao que ja tem os logins, ele nao pede nada.
+5. No fim aparece o endereco para colocar no app, em Ajustes. Exemplo:
+       http://192.168.0.10:3333
+
+O QUE ELE FAZ
+- Copia a API para C:\OficinaOS\api e a pasta do Claude para C:\OficinaOS\claude
+- Cria no SQL Server, so no banco dadosretorno (nao mexe em mais nada):
+    app_oficina     le e grava   (usado pela API)
+    claude_leitura  so le        (usado pelo Claude neste PC)
+  As senhas sao geradas na hora e ficam nos arquivos .env de cada pasta:
+    C:\OficinaOS\api\.env     -> so o Windows e administradores leem
+    C:\OficinaOS\claude\.env  -> Windows, administradores e o usuario que instalou
+- Libera a porta 3333 no firewall, so para a rede local.
+- Cria a tarefa agendada "Oficina OS - API" (Agendador de Tarefas), que liga
+  com o Windows.
+
+CLAUDE NESTE PC
+- Veja C:\OficinaOS\claude\LEIA-ME.md (como instalar o Claude Code e usar de longe).
+
+DIA A DIA
+- Log da API: C:\OficinaOS\api.log
+- Para reiniciar a API: Agendador de Tarefas > "Oficina OS - API" > Finalizar e Executar
+  (ou simplesmente reiniciar o PC).
+- Para atualizar: extraia o pacote novo e rode INSTALAR.cmd de novo
+  (ele mantem os logins e as senhas que ja existem).
+
+IMPORTANTE
+- O IP do PC (192.168.0.10) pode mudar se o roteador entregar outro endereco.
+  O ideal e reservar esse IP para o SERVIDOR-OFICINA nas configuracoes do roteador.
+  Se mudar, e so trocar o endereco no app, em Ajustes.
+- Nao edite a mesma OS no PC e no celular ao mesmo tempo.
+
+PARA REMOVER
+- Clique duas vezes em DESINSTALAR.cmd.

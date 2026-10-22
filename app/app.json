@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Oficina OS",
+    "slug": "oficina-os",
+    "version": "1.0.5",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0b0d12",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "br.com.oficinaexemplo.oficinaos",
+      "versionCode": 6
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "backgroundColor": "#0b0d12",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "buildArchs": [
+              "arm64-v8a",
+              "armeabi-v7a"
+            ]
+          }
+        }
+      ],
+      "expo-sharing"
+    ]
+  }
+}

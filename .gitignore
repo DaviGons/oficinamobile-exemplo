@@ -1,0 +1,9 @@
+# Dados extraidos do banco da oficina (clientes, capturas): nunca versionar
+dados/
+descoberta.zip
+node_modules/
+.env
+*.log
+.expo/
+.claude/worktrees/
+__pycache__/
